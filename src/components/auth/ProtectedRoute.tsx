@@ -66,6 +66,7 @@ export default function ProtectedRoute({ children, requireAdmin = false }: Prote
   if (!isSignedIn) {
     // Render Clerk's SignIn component directly
     return <SignIn routing="path" path="/admin" />
+     return <Navigate to="/sign-in" replace />
   }
 
   if (requireAdmin && user?.publicMetadata?.role !== 'admin') {
