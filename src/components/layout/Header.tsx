@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Leaf, Menu, X } from 'lucide-react'
 import { useState } from 'react'
-import { useUser, SignInButton, UserButton } from '@clerk/clerk-react'
+import { useUser, UserButton } from '@clerk/clerk-react'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
