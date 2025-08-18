@@ -50,12 +50,6 @@ export default function Header() {
             )}
             {isSignedIn ? (
               <UserButton afterSignOutUrl="/" />
-            ) : (
-              <SignInButton mode="modal">
-                <button className="text-gray-300 hover:text-emerald-400 transition-colors font-medium">
-                  Sign In
-                </button>
-              </SignInButton>
             )}
           </nav>
 
