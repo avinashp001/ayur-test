@@ -48,7 +48,7 @@ export default function Header() {
                 Admin
               </Link>
             )}
-            {isSignedIn ? (
+            {isSignedIn && (
               <UserButton afterSignOutUrl="/" />
             )}
           </nav>
