@@ -81,19 +81,19 @@ export default function BlogsPage() {
 
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-emerald-900 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Wellness <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Library</span>
             </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto px-4">
               Discover ancient wisdom and modern insights for your holistic wellness journey
             </p>
           </div>
 
           {/* Search and Filters */}
           <div className="max-w-4xl mx-auto">
-            <div className="flex flex-col md:flex-row gap-4 mb-8">
+            <div className="flex flex-col lg:flex-row gap-4 mb-8">
               <div className="flex-1 relative">
                 <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                 <input
@@ -104,11 +104,11 @@ export default function BlogsPage() {
                   className="w-full pl-12 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
                 />
               </div>
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-2">
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                  className="flex-1 sm:flex-none px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
                 >
                   {categories.map(category => (
                     <option key={category.id} value={category.id}>
@@ -116,7 +116,7 @@ export default function BlogsPage() {
                     </option>
                   ))}
                 </select>
-                <div className="flex bg-gray-800 border border-gray-700 rounded-xl p-1">
+                <div className="flex bg-gray-800 border border-gray-700 rounded-xl p-1 self-center sm:self-auto">
                   <button
                     onClick={() => setViewMode('grid')}
                     className={`p-2 rounded-lg transition-colors ${
@@ -142,9 +142,9 @@ export default function BlogsPage() {
 
       {/* Results */}
       <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl font-bold text-white">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 sm:mb-8 space-y-2 sm:space-y-0">
+            <h2 className="text-xl sm:text-2xl font-bold text-white">
               {filteredBlogs.length} Article{filteredBlogs.length !== 1 ? 's' : ''} Found
             </h2>
             <div className="text-gray-400">
@@ -157,7 +157,7 @@ export default function BlogsPage() {
           {filteredBlogs.length > 0 ? (
             <div className={`grid gap-8 ${
               viewMode === 'grid' 
-                ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3' 
+                ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' 
                 : 'grid-cols-1 max-w-4xl mx-auto'
             }`}>
               {filteredBlogs.map((blog) => (
@@ -169,7 +169,7 @@ export default function BlogsPage() {
               <div className="w-24 h-24 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Search className="w-12 h-12 text-gray-600" />
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">No articles found</h3>
+              <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">No articles found</h3>
               <p className="text-gray-400 mb-6">
                 Try adjusting your search terms or category filter
               </p>

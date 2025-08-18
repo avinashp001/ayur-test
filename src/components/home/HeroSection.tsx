@@ -23,11 +23,11 @@ export default function HeroSection() {
         <div className="flex justify-center mb-8">
           <div className="flex items-center space-x-2 bg-emerald-900/30 px-4 py-2 rounded-full border border-emerald-500/20">
             <Sparkles className="w-5 h-5 text-emerald-400" />
-            <span className="text-emerald-300 text-sm font-medium">Ancient Wisdom for Modern Living</span>
+            <span className="text-emerald-300 text-xs sm:text-sm font-medium">Ancient Wisdom for Modern Living</span>
           </div>
         </div>
 
-        <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight">
           Discover{' '}
           <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-green-400 bg-clip-text text-transparent">
             Holistic
@@ -36,15 +36,15 @@ export default function HeroSection() {
           Wellness
         </h1>
 
-        <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed px-4">
           Explore the timeless wisdom of Ayurveda, mental health insights, and natural healing practices 
           to transform your well-being from the inside out.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 px-4">
           <Link
             to="/blogs"
-            className="group bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 shadow-2xl shadow-emerald-500/25 flex items-center space-x-2"
+            className="group bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-200 shadow-2xl shadow-emerald-500/25 flex items-center space-x-2 w-full sm:w-auto justify-center"
           >
             <span>Explore Articles</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -52,14 +52,14 @@ export default function HeroSection() {
           
           <Link
             to="/categories/ayurveda"
-            className="group border-2 border-emerald-500/30 hover:border-emerald-500 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:bg-emerald-500/10 flex items-center space-x-2"
+            className="group border-2 border-emerald-500/30 hover:border-emerald-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-200 hover:bg-emerald-500/10 flex items-center space-x-2 w-full sm:w-auto justify-center"
           >
             <Leaf className="w-5 h-5 text-emerald-400" />
             <span>Learn Ayurveda</span>
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto px-4">
           {[
             {
               icon: <Leaf className="w-8 h-8 text-emerald-400" />,
@@ -77,12 +77,12 @@ export default function HeroSection() {
               description: "Holistic healing solutions"
             }
           ].map((feature, index) => (
-            <div key={index} className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-6 hover:border-emerald-500/50 transition-all duration-200">
+            <div key={index} className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-4 sm:p-6 hover:border-emerald-500/50 transition-all duration-200">
               <div className="flex flex-col items-center text-center">
                 <div className="mb-4 p-3 bg-gray-700/50 rounded-xl">
                   {feature.icon}
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
+                <h3 className="text-base sm:text-lg font-semibold text-white mb-2">{feature.title}</h3>
                 <p className="text-gray-400 text-sm">{feature.description}</p>
               </div>
             </div>

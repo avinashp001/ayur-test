@@ -42,32 +42,32 @@ export default function SettingsPage() {
 
   return (
     <AdminLayout>
-      <div className="p-6">
-        <div className="flex items-center justify-between mb-6">
+      <div className="p-4 sm:p-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 space-y-4 sm:space-y-0">
           <div>
-            <h1 className="text-2xl font-bold text-white">Settings</h1>
+            <h1 className="text-xl sm:text-2xl font-bold text-white">Settings</h1>
             <p className="text-gray-400">Manage your blog configuration</p>
           </div>
           <button
             onClick={handleSave}
             disabled={saving}
-            className="flex items-center space-x-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 shadow-lg disabled:opacity-50"
+            className="flex items-center justify-center space-x-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium transition-all duration-200 shadow-lg disabled:opacity-50"
           >
             <Save className="w-4 h-4" />
             <span>{saving ? 'Saving...' : 'Save Changes'}</span>
           </button>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 xl:grid-cols-4 gap-6">
           {/* Sidebar */}
-          <div className="lg:col-span-1">
+          <div className="xl:col-span-1">
             <div className="bg-gray-800 border border-gray-700 rounded-xl p-4">
               <nav className="space-y-2">
                 {tabs.map((tab) => (
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id as any)}
-                    className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg font-medium transition-colors ${
+                    className={`w-full flex items-center space-x-3 px-3 sm:px-4 py-2 sm:py-3 rounded-lg font-medium transition-colors text-sm sm:text-base ${
                       activeTab === tab.id
                         ? 'bg-emerald-600 text-white'
                         : 'text-gray-400 hover:text-white hover:bg-gray-700'
@@ -82,13 +82,13 @@ export default function SettingsPage() {
           </div>
 
           {/* Content */}
-          <div className="lg:col-span-3">
-            <div className="bg-gray-800 border border-gray-700 rounded-xl p-6">
+          <div className="xl:col-span-3">
+            <div className="bg-gray-800 border border-gray-700 rounded-xl p-4 sm:p-6">
               {activeTab === 'general' && (
                 <div className="space-y-6">
-                  <h2 className="text-xl font-semibold text-white">General Settings</h2>
+                  <h2 className="text-lg sm:text-xl font-semibold text-white">General Settings</h2>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-300 mb-2">
                         Site Name
@@ -139,18 +139,18 @@ export default function SettingsPage() {
                   </div>
 
                   <div className="space-y-4">
-                    <h3 className="text-lg font-medium text-white">Features</h3>
+                    <h3 className="text-base sm:text-lg font-medium text-white">Features</h3>
                     {[
                       { key: 'enableComments', label: 'Enable Comments', description: 'Allow readers to comment on blog posts' },
                       { key: 'enableNewsletter', label: 'Enable Newsletter', description: 'Show newsletter signup forms' },
                       { key: 'enableAnalytics', label: 'Enable Analytics', description: 'Track visitor analytics and engagement' }
                     ].map((feature) => (
-                      <div key={feature.key} className="flex items-center justify-between p-4 bg-gray-700/50 rounded-lg">
+                      <div key={feature.key} className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 bg-gray-700/50 rounded-lg space-y-2 sm:space-y-0">
                         <div>
                           <div className="font-medium text-white">{feature.label}</div>
                           <div className="text-sm text-gray-400">{feature.description}</div>
                         </div>
-                        <label className="relative inline-flex items-center cursor-pointer">
+                        <label className="relative inline-flex items-center cursor-pointer self-end sm:self-center">
                           <input
                             type="checkbox"
                             checked={settings[feature.key as keyof typeof settings] as boolean}
@@ -167,7 +167,7 @@ export default function SettingsPage() {
 
               {activeTab === 'seo' && (
                 <div className="space-y-6">
-                  <h2 className="text-xl font-semibold text-white">SEO Settings</h2>
+                  <h2 className="text-lg sm:text-xl font-semibold text-white">SEO Settings</h2>
                   
                   <div>
                     <label className="block text-sm font-medium text-gray-300 mb-2">
@@ -199,9 +199,9 @@ export default function SettingsPage() {
 
               {activeTab === 'social' && (
                 <div className="space-y-6">
-                  <h2 className="text-xl font-semibold text-white">Social Media</h2>
+                  <h2 className="text-lg sm:text-xl font-semibold text-white">Social Media</h2>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-300 mb-2">
                         Twitter Handle
@@ -246,9 +246,9 @@ export default function SettingsPage() {
 
               {activeTab === 'appearance' && (
                 <div className="space-y-6">
-                  <h2 className="text-xl font-semibold text-white">Appearance</h2>
+                  <h2 className="text-lg sm:text-xl font-semibold text-white">Appearance</h2>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-300 mb-2">
                         Primary Color
@@ -294,15 +294,15 @@ export default function SettingsPage() {
 
               {activeTab === 'advanced' && (
                 <div className="space-y-6">
-                  <h2 className="text-xl font-semibold text-white">Advanced Settings</h2>
+                  <h2 className="text-lg sm:text-xl font-semibold text-white">Advanced Settings</h2>
                   
                   <div className="p-4 bg-yellow-600/10 border border-yellow-600/20 rounded-lg">
-                    <div className="flex items-center justify-between">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-2 sm:space-y-0">
                       <div>
                         <div className="font-medium text-yellow-400">Maintenance Mode</div>
                         <div className="text-sm text-gray-400">Temporarily disable public access to your blog</div>
                       </div>
-                      <label className="relative inline-flex items-center cursor-pointer">
+                      <label className="relative inline-flex items-center cursor-pointer self-end sm:self-center">
                         <input
                           type="checkbox"
                           checked={settings.maintenanceMode}
@@ -315,15 +315,15 @@ export default function SettingsPage() {
                   </div>
 
                   <div className="p-4 bg-red-600/10 border border-red-600/20 rounded-lg">
-                    <h3 className="font-medium text-red-400 mb-2">Danger Zone</h3>
+                    <h3 className="text-base sm:text-lg font-medium text-red-400 mb-2">Danger Zone</h3>
                     <p className="text-sm text-gray-400 mb-4">
                       These actions are irreversible. Please proceed with caution.
                     </p>
                     <div className="space-y-3">
-                      <button className="w-full px-4 py-2 bg-red-600/20 hover:bg-red-600/30 text-red-400 border border-red-600/30 rounded-lg transition-colors">
+                      <button className="w-full px-4 py-2 bg-red-600/20 hover:bg-red-600/30 text-red-400 border border-red-600/30 rounded-lg transition-colors text-sm sm:text-base">
                         Reset All Settings
                       </button>
-                      <button className="w-full px-4 py-2 bg-red-600/20 hover:bg-red-600/30 text-red-400 border border-red-600/30 rounded-lg transition-colors">
+                      <button className="w-full px-4 py-2 bg-red-600/20 hover:bg-red-600/30 text-red-400 border border-red-600/30 rounded-lg transition-colors text-sm sm:text-base">
                         Clear All Analytics Data
                       </button>
                     </div>

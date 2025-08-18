@@ -83,19 +83,19 @@ export default function BlogEditor() {
   }
 
   return (
-    <div className="p-6">
+    <div className="p-4 sm:p-6">
       <div className="max-w-6xl mx-auto">
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold text-white">Create New Blog Post</h1>
-          <div className="flex items-center space-x-3">
-            <button className="flex items-center space-x-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 space-y-4 sm:space-y-0">
+          <h1 className="text-xl sm:text-2xl font-bold text-white">Create New Blog Post</h1>
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
+            <button className="flex items-center justify-center space-x-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors">
               <Eye className="w-4 h-4" />
               <span>Preview</span>
             </button>
             <button 
               onClick={handleSave}
               disabled={saving}
-              className="flex items-center space-x-2 px-4 py-2 bg-gray-600 hover:bg-gray-500 text-white rounded-lg transition-colors disabled:opacity-50"
+              className="flex items-center justify-center space-x-2 px-4 py-2 bg-gray-600 hover:bg-gray-500 text-white rounded-lg transition-colors disabled:opacity-50"
             >
               <Save className="w-4 h-4" />
               <span>{saving ? 'Saving...' : 'Save Draft'}</span>
@@ -103,19 +103,19 @@ export default function BlogEditor() {
             <button 
               onClick={handlePublish}
               disabled={saving}
-              className="flex items-center space-x-2 px-6 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-lg transition-colors font-medium disabled:opacity-50"
+              className="flex items-center justify-center space-x-2 px-6 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-lg transition-colors font-medium disabled:opacity-50"
             >
               <span>{saving ? 'Publishing...' : 'Publish'}</span>
             </button>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 xl:grid-cols-4 gap-6">
           {/* Main Editor */}
-          <div className="lg:col-span-3">
+          <div className="xl:col-span-3">
             <div className="bg-gray-800 border border-gray-700 rounded-xl overflow-hidden">
               {/* Tabs */}
-              <div className="flex border-b border-gray-700">
+              <div className="flex overflow-x-auto border-b border-gray-700">
                 {[
                   { id: 'content', label: 'Content', icon: Eye },
                   { id: 'seo', label: 'SEO', icon: Settings },
@@ -124,7 +124,7 @@ export default function BlogEditor() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id as any)}
-                    className={`flex items-center space-x-2 px-6 py-3 font-medium transition-colors ${
+                    className={`flex items-center space-x-2 px-4 sm:px-6 py-3 font-medium transition-colors whitespace-nowrap ${
                       activeTab === tab.id
                         ? 'text-emerald-400 border-b-2 border-emerald-400'
                         : 'text-gray-400 hover:text-white'
@@ -136,7 +136,7 @@ export default function BlogEditor() {
                 ))}
               </div>
 
-              <div className="p-6">
+              <div className="p-4 sm:p-6">
                 {activeTab === 'content' && (
                   <div className="space-y-6">
                     <div>
@@ -167,7 +167,7 @@ export default function BlogEditor() {
                           value={blog.content || ''}
                           onChange={(val) => setBlog(prev => ({ ...prev, content: val || '' }))}
                           preview="edit"
-                          height={500}
+                          height={400}
                           visibleDragBar={false}
                         />
                       </div>
@@ -237,7 +237,7 @@ export default function BlogEditor() {
                         />
                         <button
                           onClick={addKeyword}
-                          className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors"
+                          className="px-3 sm:px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors whitespace-nowrap"
                         >
                           Add
                         </button>
@@ -307,9 +307,9 @@ export default function BlogEditor() {
                           className="flex-1 px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
                           placeholder="https://example.com/image.jpg"
                         />
-                        <button className="flex items-center space-x-2 px-4 py-3 bg-gray-600 hover:bg-gray-500 text-white rounded-lg transition-colors">
+                        <button className="flex items-center space-x-2 px-3 sm:px-4 py-3 bg-gray-600 hover:bg-gray-500 text-white rounded-lg transition-colors whitespace-nowrap">
                           <Image className="w-4 h-4" />
-                          <span>Upload</span>
+                          <span className="hidden sm:inline">Upload</span>
                         </button>
                       </div>
                     </div>
@@ -333,11 +333,11 @@ export default function BlogEditor() {
           </div>
 
           {/* Sidebar */}
-          <div className="lg:col-span-1">
+          <div className="xl:col-span-1">
             <div className="space-y-6">
               {/* Publish Status */}
               <div className="bg-gray-800 border border-gray-700 rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-white mb-4">Publish Status</h3>
+                <h3 className="text-base sm:text-lg font-semibold text-white mb-4">Publish Status</h3>
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <span className="text-gray-300">Status:</span>
@@ -358,7 +358,7 @@ export default function BlogEditor() {
 
               {/* SEO Score */}
               <div className="bg-gray-800 border border-gray-700 rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-white mb-4">SEO Score</h3>
+                <h3 className="text-base sm:text-lg font-semibold text-white mb-4">SEO Score</h3>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-emerald-400 mb-2">85</div>
                   <div className="text-sm text-gray-400 mb-4">Good optimization</div>
@@ -381,7 +381,7 @@ export default function BlogEditor() {
 
               {/* Reading Time */}
               <div className="bg-gray-800 border border-gray-700 rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-white mb-4">Readability</h3>
+                <h3 className="text-base sm:text-lg font-semibold text-white mb-4">Readability</h3>
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <span className="text-gray-300">Reading Time:</span>

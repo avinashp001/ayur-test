@@ -12,19 +12,19 @@ export default function Header() {
 
   return (
     <header className="bg-gray-900/95 backdrop-blur-sm border-b border-emerald-500/20 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-lg flex items-center justify-center">
-              <Leaf className="w-6 h-6 text-white" />
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-lg flex items-center justify-center">
+              <Leaf className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-white">AyurHealth</h1>
-              <p className="text-xs text-emerald-400">Holistic Wellness Blog</p>
+              <h1 className="text-lg sm:text-xl font-bold text-white">AyurHealth</h1>
+              <p className="text-xs text-emerald-400 hidden sm:block">Holistic Wellness Blog</p>
             </div>
           </Link>
 
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             <Link to="/" className="text-gray-300 hover:text-emerald-400 transition-colors font-medium">
               Home
             </Link>
@@ -54,7 +54,7 @@ export default function Header() {
           </nav>
 
           <button
-            className="md:hidden text-gray-300 hover:text-white"
+            className="lg:hidden text-gray-300 hover:text-white p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -62,7 +62,7 @@ export default function Header() {
         </div>
 
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-700">
+          <div className="lg:hidden py-4 border-t border-gray-700">
             <div className="flex flex-col space-y-3">
               <Link to="/" className="text-gray-300 hover:text-emerald-400 transition-colors">Home</Link>
               <Link to="/blogs" className="text-gray-300 hover:text-emerald-400 transition-colors">Blogs</Link>
@@ -71,6 +71,11 @@ export default function Header() {
               <Link to="/about" className="text-gray-300 hover:text-emerald-400 transition-colors">About</Link>
               {isAdmin && (
                 <Link to="/admin" className="text-emerald-400 font-medium">Admin Panel</Link>
+              )}
+              {isSignedIn && (
+                <div className="pt-3 border-t border-gray-700">
+                  <UserButton afterSignOutUrl="/" />
+                </div>
               )}
             </div>
           </div>

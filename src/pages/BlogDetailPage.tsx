@@ -112,7 +112,7 @@ export default function BlogDetailPage() {
 
       {/* Back Button */}
       <div className="bg-gray-800 border-b border-gray-700">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div className="max-w-4xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4">
           <Link
             to="/blogs"
             className="inline-flex items-center space-x-2 text-gray-400 hover:text-emerald-400 transition-colors"
@@ -124,7 +124,7 @@ export default function BlogDetailPage() {
       </div>
 
       {/* Article Header */}
-      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <article className="max-w-4xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-8 sm:py-12">
         <header className="mb-12">
           <div className="mb-6">
             <span className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-2 rounded-full text-sm font-medium">
@@ -132,15 +132,15 @@ export default function BlogDetailPage() {
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
             {blog.title}
           </h1>
 
-          <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-300 mb-6 sm:mb-8 leading-relaxed">
             {blog.excerpt}
           </p>
 
-          <div className="flex flex-wrap items-center gap-6 text-gray-400 mb-8">
+          <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-4 sm:gap-6 text-gray-400 mb-6 sm:mb-8">
             <div className="flex items-center space-x-2">
               <div className="w-10 h-10 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-full flex items-center justify-center text-white font-bold">
                 {blog.author?.charAt(0)}
@@ -151,28 +151,30 @@ export default function BlogDetailPage() {
               </div>
             </div>
 
-            <div className="flex items-center space-x-1">
-              <Calendar className="w-4 h-4" />
-              <span>{format(new Date(blog.published_at), 'MMMM dd, yyyy')}</span>
-            </div>
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+              <div className="flex items-center space-x-1">
+                <Calendar className="w-4 h-4" />
+                <span className="text-sm sm:text-base">{format(new Date(blog.published_at), 'MMM dd, yyyy')}</span>
+              </div>
 
-            <div className="flex items-center space-x-1">
-              <Clock className="w-4 h-4" />
-              <span>{blog.reading_time} min read</span>
-            </div>
+              <div className="flex items-center space-x-1">
+                <Clock className="w-4 h-4" />
+                <span className="text-sm sm:text-base">{blog.reading_time} min read</span>
+              </div>
 
-            <div className="flex items-center space-x-1">
-              <Eye className="w-4 h-4" />
-              <span>{(blog.views || 0).toLocaleString()} views</span>
+              <div className="flex items-center space-x-1">
+                <Eye className="w-4 h-4" />
+                <span className="text-sm sm:text-base">{(blog.views || 0).toLocaleString()} views</span>
+              </div>
             </div>
           </div>
 
           {/* Action Buttons */}
-          <div className="flex items-center space-x-4">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
             <button
               onClick={handleLike}
               disabled={liked}
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
+              className={`flex items-center justify-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
                 liked
                   ? 'bg-rose-600 text-white'
                   : 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white'
@@ -184,7 +186,7 @@ export default function BlogDetailPage() {
 
             <button
               onClick={handleShare}
-              className="flex items-center space-x-2 px-4 py-2 bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors"
+              className="flex items-center justify-center space-x-2 px-4 py-2 bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white rounded-lg transition-colors"
             >
               <Share2 className="w-4 h-4" />
               <span>Share</span>
@@ -198,13 +200,13 @@ export default function BlogDetailPage() {
             <img
               src={blog.featured_image}
               alt={blog.title}
-              className="w-full h-96 object-cover rounded-2xl"
+              className="w-full h-64 sm:h-80 lg:h-96 object-cover rounded-2xl"
             />
           </div>
         )}
 
         {/* Article Content */}
-        <div className="prose prose-lg prose-invert max-w-none mb-12">
+        <div className="prose prose-sm sm:prose-base lg:prose-lg prose-invert max-w-none mb-12">
           <div
             dangerouslySetInnerHTML={{ __html: blog.content || '' }}
             className="text-gray-300 leading-relaxed"
@@ -214,7 +216,7 @@ export default function BlogDetailPage() {
         {/* Keywords */}
         {blog.keywords && blog.keywords.length > 0 && (
           <div className="mb-12">
-            <h3 className="text-lg font-semibold text-white mb-4">Tags</h3>
+            <h3 className="text-base sm:text-lg font-semibold text-white mb-4">Tags</h3>
             <div className="flex flex-wrap gap-2">
               {blog.keywords.map((keyword, index) => (
                 <span
@@ -232,8 +234,8 @@ export default function BlogDetailPage() {
         {/* Related Articles */}
         {relatedBlogs.length > 0 && (
           <section className="border-t border-gray-700 pt-12">
-            <h3 className="text-2xl font-bold text-white mb-8">Related Articles</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-6 sm:mb-8">Related Articles</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {relatedBlogs.map((relatedBlog) => (
                 <Link
                   key={relatedBlog.id}
@@ -243,7 +245,7 @@ export default function BlogDetailPage() {
                   <img
                     src={relatedBlog.featured_image}
                     alt={relatedBlog.title}
-                    className="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-32 sm:h-40 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="p-4">
                     <h4 className="font-semibold text-white mb-2 group-hover:text-emerald-400 transition-colors line-clamp-2">

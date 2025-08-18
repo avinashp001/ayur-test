@@ -4,9 +4,9 @@ import { Leaf, Heart, Shield, Zap } from 'lucide-react'
 export default function Footer() {
   return (
     <footer className="bg-gray-900 border-t border-gray-700">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="col-span-1 md:col-span-2">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-8 sm:py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div className="col-span-1 sm:col-span-2 lg:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <div className="w-10 h-10 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-lg flex items-center justify-center">
                 <Leaf className="w-6 h-6 text-white" />
@@ -20,7 +20,7 @@ export default function Footer() {
               Discover the ancient wisdom of Ayurveda and modern approaches to mental health. 
               Our expert-curated content helps you achieve balance and wellness naturally.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
               <div className="flex items-center space-x-2 text-emerald-400">
                 <Heart className="w-5 h-5" />
                 <span className="text-sm">Holistic Wellness</span>
@@ -69,12 +69,12 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-700 pt-8 mt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="border-t border-gray-700 pt-6 sm:pt-8 mt-6 sm:mt-8">
+          <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <p className="text-gray-400 text-sm">
               © 2025 AyurHealth. All rights reserved. Made with ❤️ for holistic wellness.
             </p>
-            <div className="flex items-center space-x-2 text-emerald-400 mt-4 md:mt-0">
+            <div className="flex items-center space-x-2 text-emerald-400">
               <Zap className="w-4 h-4" />
               <span className="text-sm">Powered by Ancient Wisdom</span>
             </div>

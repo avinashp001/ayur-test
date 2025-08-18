@@ -114,7 +114,7 @@ export default function AnalyticsDashboard() {
   return (
     <div className="p-6 space-y-6">
       {/* Key Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         <StatCard
           title="Total Views"
           value={stats.totalViews.toLocaleString()}
@@ -146,12 +146,12 @@ export default function AnalyticsDashboard() {
       </div>
 
       {/* Charts Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
         {/* Views Chart */}
         <div className="bg-gray-800 border border-gray-700 rounded-xl p-6">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="text-lg font-semibold text-white">Weekly Views</h3>
-            <div className="flex items-center space-x-4 text-sm">
+            <h3 className="text-base sm:text-lg font-semibold text-white">Weekly Views</h3>
+            <div className="hidden sm:flex items-center space-x-4 text-sm">
               <div className="flex items-center space-x-2">
                 <div className="w-3 h-3 bg-emerald-400 rounded-full"></div>
                 <span className="text-gray-400">Total Views</span>
@@ -162,7 +162,7 @@ export default function AnalyticsDashboard() {
               </div>
             </div>
           </div>
-          <ResponsiveContainer width="100%" height={300}>
+          <ResponsiveContainer width="100%" height={250}>
             <LineChart data={viewsData}>
               <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
               <XAxis dataKey="name" stroke="#9ca3af" />
@@ -194,9 +194,9 @@ export default function AnalyticsDashboard() {
 
         {/* Category Distribution */}
         <div className="bg-gray-800 border border-gray-700 rounded-xl p-6">
-          <h3 className="text-lg font-semibold text-white mb-6">Content by Category</h3>
+          <h3 className="text-base sm:text-lg font-semibold text-white mb-6">Content by Category</h3>
           <div className="flex items-center justify-center">
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={250}>
               <PieChart>
                 <Pie
                   data={categoryData}
@@ -222,17 +222,17 @@ export default function AnalyticsDashboard() {
       {/* Top Performing Posts */}
       <div className="bg-gray-800 border border-gray-700 rounded-xl p-6">
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-lg font-semibold text-white">Top Performing Posts</h3>
-          <button className="text-emerald-400 hover:text-emerald-300 text-sm font-medium">
+          <h3 className="text-base sm:text-lg font-semibold text-white">Top Performing Posts</h3>
+          <button className="hidden sm:block text-emerald-400 hover:text-emerald-300 text-sm font-medium">
             View All
           </button>
         </div>
         <div className="space-y-4">
           {topPosts.map((post, index) => (
-            <div key={index} className="flex items-center justify-between p-4 bg-gray-700/50 rounded-lg hover:bg-gray-700 transition-colors">
+            <div key={index} className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 bg-gray-700/50 rounded-lg hover:bg-gray-700 transition-colors space-y-2 sm:space-y-0">
               <div className="flex-1">
-                <h4 className="font-medium text-white mb-1">{post.title}</h4>
-                <div className="flex items-center space-x-4 text-sm text-gray-400">
+                <h4 className="font-medium text-white mb-1 line-clamp-2">{post.title}</h4>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-1 sm:space-y-0 text-sm text-gray-400">
                   <div className="flex items-center space-x-1">
                     <Eye className="w-4 h-4" />
                     <span>{(post.views || 0).toLocaleString()} views</span>
@@ -243,7 +243,7 @@ export default function AnalyticsDashboard() {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 self-end sm:self-center">
                 {(post.views || 0) > 1000 ? (
                   <TrendingUp className="w-5 h-5 text-green-400" />
                 ) : (
@@ -256,11 +256,11 @@ export default function AnalyticsDashboard() {
       </div>
 
       {/* Audience Insights */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div className="bg-gray-800 border border-gray-700 rounded-xl p-6">
           <div className="flex items-center space-x-2 mb-4">
             <Globe className="w-5 h-5 text-emerald-400" />
-            <h3 className="text-lg font-semibold text-white">Top Countries</h3>
+            <h3 className="text-base sm:text-lg font-semibold text-white">Top Countries</h3>
           </div>
           <div className="space-y-3">
             {[
@@ -288,7 +288,7 @@ export default function AnalyticsDashboard() {
         <div className="bg-gray-800 border border-gray-700 rounded-xl p-6">
           <div className="flex items-center space-x-2 mb-4">
             <Smartphone className="w-5 h-5 text-emerald-400" />
-            <h3 className="text-lg font-semibold text-white">Device Types</h3>
+            <h3 className="text-base sm:text-lg font-semibold text-white">Device Types</h3>
           </div>
           <div className="space-y-3">
             {[
@@ -315,7 +315,7 @@ export default function AnalyticsDashboard() {
         <div className="bg-gray-800 border border-gray-700 rounded-xl p-6">
           <div className="flex items-center space-x-2 mb-4">
             <Clock className="w-5 h-5 text-emerald-400" />
-            <h3 className="text-lg font-semibold text-white">Peak Hours</h3>
+            <h3 className="text-base sm:text-lg font-semibold text-white">Peak Hours</h3>
           </div>
           <div className="space-y-3">
             {[
@@ -325,7 +325,7 @@ export default function AnalyticsDashboard() {
               { time: '6:00 PM - 8:00 PM', percentage: 15 }
             ].map((item, index) => (
               <div key={index} className="flex items-center justify-between">
-                <span className="text-gray-300 text-sm">{item.time}</span>
+                <span className="text-gray-300 text-xs sm:text-sm">{item.time}</span>
                 <div className="flex items-center space-x-2">
                   <div className="w-16 h-2 bg-gray-700 rounded-full overflow-hidden">
                     <div 
@@ -333,7 +333,7 @@ export default function AnalyticsDashboard() {
                       style={{ width: `${item.percentage}%` }}
                     />
                   </div>
-                  <span className="text-gray-400 text-sm">{item.percentage}%</span>
+                  <span className="text-gray-400 text-xs sm:text-sm">{item.percentage}%</span>
                 </div>
               </div>
             ))}

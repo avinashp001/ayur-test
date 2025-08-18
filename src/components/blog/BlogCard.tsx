@@ -21,7 +21,7 @@ export default function BlogCard({ blog, featured = false }: BlogCardProps) {
           src={blog.featured_image}
           alt={blog.title}
           className={`w-full object-cover group-hover:scale-105 transition-transform duration-300 ${
-            featured ? 'h-64' : 'h-48'
+            featured ? 'h-48 sm:h-56 md:h-64' : 'h-40 sm:h-48'
           }`}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -48,8 +48,8 @@ export default function BlogCard({ blog, featured = false }: BlogCardProps) {
         </div>
       </div>
 
-      <div className={`p-6 ${featured ? 'p-8' : ''}`}>
-        <div className="flex items-center space-x-4 text-gray-400 text-sm mb-4">
+      <div className={`p-4 sm:p-6 ${featured ? 'sm:p-6 md:p-8' : ''}`}>
+        <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-1 sm:space-y-0 text-gray-400 text-sm mb-4">
           <div className="flex items-center space-x-1">
             <Calendar className="w-4 h-4" />
             <span>{format(new Date(blog.published_at), 'MMM dd, yyyy')}</span>
@@ -60,19 +60,19 @@ export default function BlogCard({ blog, featured = false }: BlogCardProps) {
           </div>
         </div>
 
-        <h2 className={`font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors ${
-          featured ? 'text-2xl' : 'text-xl'
+        <h2 className={`font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors line-clamp-2 ${
+          featured ? 'text-xl sm:text-2xl' : 'text-lg sm:text-xl'
         }`}>
           <Link to={`/blog/${blog.slug}`}>
             {blog.title}
           </Link>
         </h2>
 
-        <p className="text-gray-300 mb-6 leading-relaxed">
+        <p className="text-gray-300 mb-4 sm:mb-6 leading-relaxed line-clamp-3">
           {blog.excerpt}
         </p>
 
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0">
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-full flex items-center justify-center text-white text-sm font-bold">
               {blog.author.charAt(0)}

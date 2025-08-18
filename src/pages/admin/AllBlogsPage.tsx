@@ -63,22 +63,22 @@ export default function AllBlogsPage() {
 
   return (
     <AdminLayout>
-      <div className="p-6">
-        <div className="flex items-center justify-between mb-6">
+      <div className="p-4 sm:p-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 space-y-4 sm:space-y-0">
           <div>
-            <h1 className="text-2xl font-bold text-white">All Blogs</h1>
+            <h1 className="text-xl sm:text-2xl font-bold text-white">All Blogs</h1>
             <p className="text-gray-400">Manage your blog posts</p>
           </div>
           <Link
             to="/admin/blogs/create"
-            className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 shadow-lg"
+            className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium transition-all duration-200 shadow-lg text-center"
           >
             Create New Blog
           </Link>
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex space-x-1 bg-gray-800 p-1 rounded-lg mb-6 w-fit">
+        <div className="flex flex-wrap space-x-1 bg-gray-800 p-1 rounded-lg mb-6 w-full sm:w-fit overflow-x-auto">
           {[
             { id: 'all', label: 'All Posts', count: blogs.length },
             { id: 'published', label: 'Published', count: blogs.filter(b => b.published).length },
@@ -87,7 +87,7 @@ export default function AllBlogsPage() {
             <button
               key={tab.id}
               onClick={() => setFilter(tab.id as any)}
-              className={`px-4 py-2 rounded-md font-medium transition-colors ${
+              className={`px-3 sm:px-4 py-2 rounded-md font-medium transition-colors whitespace-nowrap text-sm sm:text-base ${
                 filter === tab.id
                   ? 'bg-emerald-600 text-white'
                   : 'text-gray-400 hover:text-white hover:bg-gray-700'
@@ -104,31 +104,43 @@ export default function AllBlogsPage() {
             <table className="w-full">
               <thead className="bg-gray-700">
                 <tr>
-                  <th className="px-6 py-4 text-left text-sm font-medium text-gray-300">Title</th>
-                  <th className="px-6 py-4 text-left text-sm font-medium text-gray-300">Status</th>
-                  <th className="px-6 py-4 text-left text-sm font-medium text-gray-300">Category</th>
-                  <th className="px-6 py-4 text-left text-sm font-medium text-gray-300">Views</th>
-                  <th className="px-6 py-4 text-left text-sm font-medium text-gray-300">Date</th>
-                  <th className="px-6 py-4 text-left text-sm font-medium text-gray-300">Actions</th>
+                  <th className="px-3 sm:px-6 py-3 sm:py-4 text-left text-xs sm:text-sm font-medium text-gray-300">Title</th>
+                  <th className="px-3 sm:px-6 py-3 sm:py-4 text-left text-xs sm:text-sm font-medium text-gray-300 hidden sm:table-cell">Status</th>
+                  <th className="px-3 sm:px-6 py-3 sm:py-4 text-left text-xs sm:text-sm font-medium text-gray-300 hidden md:table-cell">Category</th>
+                  <th className="px-3 sm:px-6 py-3 sm:py-4 text-left text-xs sm:text-sm font-medium text-gray-300 hidden lg:table-cell">Views</th>
+                  <th className="px-3 sm:px-6 py-3 sm:py-4 text-left text-xs sm:text-sm font-medium text-gray-300 hidden lg:table-cell">Date</th>
+                  <th className="px-3 sm:px-6 py-3 sm:py-4 text-left text-xs sm:text-sm font-medium text-gray-300">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-700">
                 {filteredBlogs.map((blog) => (
                   <tr key={blog.id} className="hover:bg-gray-700/50">
-                    <td className="px-6 py-4">
+                    <td className="px-3 sm:px-6 py-3 sm:py-4">
                       <div className="flex items-center space-x-3">
-                        <img
-                          src={blog.featured_image}
-                          alt={blog.title}
-                          className="w-12 h-12 object-cover rounded-lg"
-                        />
+                        <div className="hidden sm:block">
+                          <img
+                            src={blog.featured_image}
+                            alt={blog.title}
+                            className="w-10 sm:w-12 h-10 sm:h-12 object-cover rounded-lg"
+                          />
+                        </div>
                         <div>
-                          <div className="font-medium text-white line-clamp-1">{blog.title}</div>
-                          <div className="text-sm text-gray-400 line-clamp-1">{blog.excerpt}</div>
+                          <div className="font-medium text-white line-clamp-2 text-sm sm:text-base">{blog.title}</div>
+                          <div className="text-xs sm:text-sm text-gray-400 line-clamp-1 hidden sm:block">{blog.excerpt}</div>
+                          <div className="sm:hidden flex items-center space-x-2 mt-1">
+                            <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${
+                              blog.published
+                                ? 'bg-green-600/20 text-green-400'
+                                : 'bg-yellow-600/20 text-yellow-400'
+                            }`}>
+                              {blog.published ? 'Published' : 'Draft'}
+                            </span>
+                            <span className="text-xs text-gray-400 capitalize">{blog.category}</span>
+                          </div>
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="px-3 sm:px-6 py-3 sm:py-4 hidden sm:table-cell">
                       <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                         blog.published
                           ? 'bg-green-600/20 text-green-400'
@@ -137,44 +149,44 @@ export default function AllBlogsPage() {
                         {blog.published ? 'Published' : 'Draft'}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-gray-300 capitalize">
+                    <td className="px-3 sm:px-6 py-3 sm:py-4 text-gray-300 capitalize hidden md:table-cell">
                       {blog.category}
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="px-3 sm:px-6 py-3 sm:py-4 hidden lg:table-cell">
                       <div className="flex items-center space-x-1 text-gray-300">
                         <Eye className="w-4 h-4" />
                         <span>{(blog.views || 0).toLocaleString()}</span>
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-gray-300">
+                    <td className="px-3 sm:px-6 py-3 sm:py-4 text-gray-300 hidden lg:table-cell">
                       <div className="flex items-center space-x-1">
                         <Calendar className="w-4 h-4" />
-                        <span>{format(new Date(blog.created_at), 'MMM dd, yyyy')}</span>
+                        <span className="text-sm">{format(new Date(blog.created_at), 'MMM dd, yyyy')}</span>
                       </div>
                     </td>
-                    <td className="px-6 py-4">
-                      <div className="flex items-center space-x-2">
+                    <td className="px-3 sm:px-6 py-3 sm:py-4">
+                      <div className="flex items-center space-x-1 sm:space-x-2">
                         <Link
                           to={`/blog/${blog.slug}`}
                           target="_blank"
-                          className="p-2 text-gray-400 hover:text-emerald-400 hover:bg-gray-700 rounded-lg transition-colors"
+                          className="p-1.5 sm:p-2 text-gray-400 hover:text-emerald-400 hover:bg-gray-700 rounded-lg transition-colors"
                           title="View Blog"
                         >
-                          <Eye className="w-4 h-4" />
+                          <Eye className="w-3 h-3 sm:w-4 sm:h-4" />
                         </Link>
                         <Link
                           to={`/admin/blogs/edit/${blog.id}`}
-                          className="p-2 text-gray-400 hover:text-blue-400 hover:bg-gray-700 rounded-lg transition-colors"
+                          className="p-1.5 sm:p-2 text-gray-400 hover:text-blue-400 hover:bg-gray-700 rounded-lg transition-colors"
                           title="Edit Blog"
                         >
-                          <Edit className="w-4 h-4" />
+                          <Edit className="w-3 h-3 sm:w-4 sm:h-4" />
                         </Link>
                         <button
                           onClick={() => handleDelete(blog.id)}
-                          className="p-2 text-gray-400 hover:text-red-400 hover:bg-gray-700 rounded-lg transition-colors"
+                          className="p-1.5 sm:p-2 text-gray-400 hover:text-red-400 hover:bg-gray-700 rounded-lg transition-colors"
                           title="Delete Blog"
                         >
-                          <Trash2 className="w-4 h-4" />
+                          <Trash2 className="w-3 h-3 sm:w-4 sm:h-4" />
                         </button>
                       </div>
                     </td>
@@ -187,7 +199,7 @@ export default function AllBlogsPage() {
           {filteredBlogs.length === 0 && (
             <div className="text-center py-12">
               <TrendingUp className="w-12 h-12 text-gray-600 mx-auto mb-4" />
-              <h3 className="text-lg font-medium text-white mb-2">No blogs found</h3>
+              <h3 className="text-base sm:text-lg font-medium text-white mb-2">No blogs found</h3>
               <p className="text-gray-400 mb-4">
                 {filter === 'all' 
                   ? "You haven't created any blogs yet."

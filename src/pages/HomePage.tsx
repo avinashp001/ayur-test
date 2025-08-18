@@ -47,24 +47,24 @@ export default function HomePage() {
       
       {/* Featured Articles Section */}
       <section className="py-16 bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="flex justify-center mb-4">
               <div className="flex items-center space-x-2 bg-emerald-900/30 px-4 py-2 rounded-full border border-emerald-500/20">
                 <Sparkles className="w-4 h-4 text-emerald-400" />
-                <span className="text-emerald-300 text-sm font-medium">Featured Articles</span>
+                <span className="text-emerald-300 text-xs sm:text-sm font-medium">Featured Articles</span>
               </div>
             </div>
-            <h2 className="text-4xl font-bold text-white mb-4">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
               Wisdom for Your <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Wellness Journey</span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto px-4">
               Discover expert insights on Ayurveda, mental health, and holistic healing practices
             </p>
           </div>
 
           {featuredBlogs.length > 0 ? (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 sm:gap-8 mb-8">
               <BlogCard blog={featuredBlogs[0]} featured={true} />
               <div className="space-y-6">
                 {featuredBlogs[1] && <BlogCard blog={featuredBlogs[1]} />}
@@ -82,10 +82,10 @@ export default function HomePage() {
 
       {/* Recent Articles Section */}
       <section className="py-16 bg-gray-800/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-12">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 sm:mb-12 space-y-4 sm:space-y-0">
             <div>
-              <h2 className="text-3xl font-bold text-white mb-2">Latest Insights</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">Latest Insights</h2>
               <p className="text-gray-400">Fresh perspectives on holistic wellness</p>
             </div>
             <Link 
@@ -98,7 +98,7 @@ export default function HomePage() {
           </div>
 
           {recentBlogs.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {recentBlogs.map((blog) => (
                 <BlogCard key={blog.id} blog={blog} />
               ))}
@@ -114,13 +114,13 @@ export default function HomePage() {
 
       {/* Categories Section */}
       <section className="py-16 bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Explore by Category</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Explore by Category</h2>
             <p className="text-gray-400">Find content tailored to your wellness interests</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {[
               {
                 name: 'Ayurveda',
@@ -156,7 +156,7 @@ export default function HomePage() {
                 to={category.href}
                 className="group bg-gray-800 border border-gray-700 rounded-xl overflow-hidden hover:border-emerald-500/50 transition-all duration-300"
               >
-                <div className="relative h-32">
+                <div className="relative h-32 sm:h-40">
                   <img
                     src={category.image}
                     alt={category.name}
@@ -168,7 +168,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="p-4">
-                  <h3 className="font-semibold text-white mb-1 group-hover:text-emerald-400 transition-colors">
+                  <h3 className="text-sm sm:text-base font-semibold text-white mb-1 group-hover:text-emerald-400 transition-colors">
                     {category.name}
                   </h3>
                   <p className="text-sm text-gray-400">{category.description}</p>
